@@ -1,0 +1,1305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Master Quest — Idle Chess Adventure | LearnTech Games</title>
+    <meta
+      name="description"
+      content="Learn real chess. Feel real progression. 11,000+ puzzles, famous game study, idle mastery. Free on Steam, Android & iOS."
+    />
+    <meta
+      name="keywords"
+      content="chess, idle game, incremental, puzzle, chess puzzles, learn chess, neon retro, chess master"
+    />
+    <meta name="author" content="LearnTech Games" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Chess Master Quest — Idle Chess Adventure"
+    />
+    <meta
+      property="og:description"
+      content="Learn real chess. Feel real progression. 11,000+ puzzles, famous game study, idle mastery."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chessmastidle.com" />
+    <!-- <meta property="og:image" content="assets/og-image.png"> -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Chess Master Quest — Idle Chess Adventure"
+    />
+    <meta
+      name="twitter:description"
+      content="Learn real chess. Feel real progression. 11,000+ puzzles, famous game study, idle mastery."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ============================================
+       CSS VARIABLES — Neon Retro Arcade Theme
+       ============================================ */
+      :root {
+        --bg-deep: #06060e;
+        --bg-primary: #0a0a14;
+        --bg-card: rgba(13, 13, 26, 0.85);
+        --bg-glass: rgba(20, 20, 40, 0.6);
+        --neon-cyan: #00e5ff;
+        --neon-magenta: #ff00e5;
+        --neon-purple: #b44aff;
+        --neon-green: #39ff14;
+        --neon-gold: #ffd700;
+        --neon-orange: #ff6b35;
+        --text-primary: #e8e8f0;
+        --text-secondary: #9999bb;
+        --text-dim: #666688;
+        --glow-cyan:
+          0 0 20px rgba(0, 229, 255, 0.3), 0 0 40px rgba(0, 229, 255, 0.1);
+        --glow-magenta:
+          0 0 20px rgba(255, 0, 229, 0.3), 0 0 40px rgba(255, 0, 229, 0.1);
+        --glow-purple:
+          0 0 20px rgba(180, 74, 255, 0.3), 0 0 40px rgba(180, 74, 255, 0.1);
+        --border-radius: 12px;
+        --font-display: "Orbitron", monospace, sans-serif;
+        --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      /* ============================================
+       RESET & BASE
+       ============================================ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-deep);
+        color: var(--text-primary);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+      a {
+        color: var(--neon-cyan);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: #fff;
+        text-shadow: var(--glow-cyan);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* ============================================
+       ANIMATED BACKGROUND — Starfield + Grid
+       ============================================ */
+      .bg-stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background:
+          radial-gradient(
+            1px 1px at 10% 20%,
+            rgba(0, 229, 255, 0.4),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 25% 55%,
+            rgba(255, 0, 229, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 40% 15%,
+            rgba(180, 74, 255, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 55% 75%,
+            rgba(0, 229, 255, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 70% 35%,
+            rgba(255, 0, 229, 0.25),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 85% 85%,
+            rgba(57, 255, 20, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 15% 90%,
+            rgba(0, 229, 255, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 92% 12%,
+            rgba(180, 74, 255, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 60% 48%,
+            rgba(255, 0, 229, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 33% 70%,
+            rgba(0, 229, 255, 0.25),
+            transparent
+          );
+      }
+      .bg-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        animation: gridPulse 8s ease-in-out infinite;
+      }
+      @keyframes gridPulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      /* ============================================
+       NAVIGATION
+       ============================================ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 6, 14, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+      }
+      .nav-logo {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+        letter-spacing: 0.05em;
+      }
+      .nav-logo .quest {
+        color: var(--neon-magenta);
+        text-shadow: var(--glow-magenta);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+      .nav-links a {
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        transition: all 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+      }
+
+      /* ============================================
+       HERO SECTION
+       ============================================ */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+        position: relative;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 200px;
+        background: linear-gradient(transparent, var(--bg-deep));
+        pointer-events: none;
+      }
+      .hero-badge {
+        font-family: var(--font-display);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--neon-green);
+        text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        margin-bottom: 1.5rem;
+        padding: 0.5rem 1.5rem;
+        border: 1px solid rgba(57, 255, 20, 0.3);
+        border-radius: 100px;
+        animation: badgePulse 3s ease-in-out infinite;
+      }
+      @keyframes badgePulse {
+        0%,
+        100% {
+          border-color: rgba(57, 255, 20, 0.3);
+        }
+        50% {
+          border-color: rgba(57, 255, 20, 0.6);
+        }
+      }
+      .hero h1 {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      }
+      .hero h1 .line1 {
+        display: block;
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+      }
+      .hero h1 .line2 {
+        display: block;
+        background: linear-gradient(
+          135deg,
+          var(--neon-magenta),
+          var(--neon-purple)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-sub {
+        font-size: clamp(1rem, 2vw, 1.35rem);
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 1.5rem auto 2.5rem;
+        font-weight: 300;
+      }
+      .hero-sub strong {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      /* ============================================
+       BUTTONS
+       ============================================ */
+      .btn {
+        font-family: var(--font-display);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--neon-cyan), #00b8d4);
+        color: var(--bg-deep);
+        box-shadow:
+          0 0 20px rgba(0, 229, 255, 0.3),
+          0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 0 30px rgba(0, 229, 255, 0.5),
+          0 8px 30px rgba(0, 0, 0, 0.4);
+        color: var(--bg-deep);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--neon-magenta);
+        border: 1px solid rgba(255, 0, 229, 0.4);
+        box-shadow: 0 0 10px rgba(255, 0, 229, 0.1);
+      }
+      .btn-secondary:hover {
+        background: rgba(255, 0, 229, 0.1);
+        border-color: var(--neon-magenta);
+        box-shadow: var(--glow-magenta);
+        color: var(--neon-magenta);
+        transform: translateY(-2px);
+      }
+
+      /* ============================================
+       STATS BAR
+       ============================================ */
+      .stats-bar {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        padding: 3rem 2rem;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .stat {
+        text-align: center;
+      }
+      .stat-number {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 0.25rem;
+      }
+
+      /* ============================================
+       SECTIONS
+       ============================================ */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .section-header h2 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+      .section-header h2 .accent {
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+      }
+      .section-header p {
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+      }
+
+      /* ============================================
+       FEATURE CARDS
+       ============================================ */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+      }
+      .feature-card {
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 229, 255, 0.08);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--neon-cyan),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .feature-card:hover {
+        border-color: rgba(0, 229, 255, 0.2);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 40px rgba(0, 229, 255, 0.08);
+      }
+      .feature-card:hover::before {
+        opacity: 1;
+      }
+      .feature-card:nth-child(2n)::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--neon-magenta),
+          transparent
+        );
+      }
+      .feature-card:nth-child(2n):hover {
+        border-color: rgba(255, 0, 229, 0.2);
+        box-shadow: 0 8px 40px rgba(255, 0, 229, 0.08);
+      }
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .feature-card h3 {
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
+      }
+      .feature-card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* ============================================
+       SCREENSHOT GALLERY
+       ============================================ */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .gallery-item {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        border: 1px solid rgba(0, 229, 255, 0.1);
+        background: var(--bg-card);
+        aspect-ratio: 16/10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-dim);
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        position: relative;
+        transition: all 0.3s;
+      }
+      .gallery-item:hover {
+        border-color: rgba(0, 229, 255, 0.3);
+        box-shadow: var(--glow-cyan);
+        transform: scale(1.02);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ============================================
+       JOURNEY (Progression Timeline)
+       ============================================ */
+      .journey-track {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        margin-top: 3rem;
+        position: relative;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+      }
+      .journey-track::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--neon-green),
+          var(--neon-cyan),
+          var(--neon-purple),
+          var(--neon-magenta),
+          var(--neon-gold)
+        );
+        opacity: 0.3;
+      }
+      .journey-stop {
+        flex: 1;
+        min-width: 140px;
+        text-align: center;
+        position: relative;
+        padding: 0 0.5rem;
+      }
+      .journey-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        position: relative;
+        z-index: 1;
+      }
+      .journey-stop:nth-child(1) .journey-dot {
+        background: var(--neon-green);
+        box-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+      }
+      .journey-stop:nth-child(2) .journey-dot {
+        background: var(--neon-cyan);
+        box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+      }
+      .journey-stop:nth-child(3) .journey-dot {
+        background: var(--neon-purple);
+        box-shadow: 0 0 12px rgba(180, 74, 255, 0.5);
+      }
+      .journey-stop:nth-child(4) .journey-dot {
+        background: var(--neon-magenta);
+        box-shadow: 0 0 12px rgba(255, 0, 229, 0.5);
+      }
+      .journey-stop:nth-child(5) .journey-dot {
+        background: var(--neon-gold);
+        box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+      }
+      .journey-elo {
+        font-family: var(--font-display);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+      }
+      .journey-title {
+        font-size: 0.7rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .journey-venue {
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      /* ============================================
+       PLATFORMS
+       ============================================ */
+      .platforms {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+      .platform-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 229, 255, 0.1);
+        border-radius: var(--border-radius);
+        transition: all 0.3s;
+        backdrop-filter: blur(10px);
+        text-decoration: none;
+      }
+      .platform-badge:hover {
+        border-color: rgba(0, 229, 255, 0.3);
+        transform: translateY(-3px);
+        box-shadow: var(--glow-cyan);
+      }
+      .platform-badge svg {
+        width: 28px;
+        height: 28px;
+        fill: var(--neon-cyan);
+      }
+      .platform-name {
+        font-family: var(--font-display);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+      .platform-status {
+        font-size: 0.7rem;
+        color: var(--text-secondary);
+        display: block;
+      }
+
+      /* ============================================
+       NEWSLETTER / CTA
+       ============================================ */
+      .cta-section {
+        text-align: center;
+        padding: 6rem 2rem;
+        position: relative;
+      }
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .cta-section h2 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+        margin-bottom: 1rem;
+      }
+      .cta-section h2 .accent {
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+      }
+      .cta-section p {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .email-form {
+        display: flex;
+        gap: 0.5rem;
+        max-width: 460px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .email-form input {
+        flex: 1;
+        min-width: 220px;
+        padding: 0.85rem 1.2rem;
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 229, 255, 0.15);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      .email-form input:focus {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.15);
+      }
+      .email-form input::placeholder {
+        color: var(--text-dim);
+      }
+
+      /* ============================================
+       FOOTER
+       ============================================ */
+      footer {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(0, 229, 255, 0.06);
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+      footer a {
+        color: var(--text-secondary);
+      }
+      footer .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      footer .footer-links a {
+        font-family: var(--font-display);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      /* ============================================
+       CHESS PIECE FLOAT ANIMATION
+       ============================================ */
+      .floating-pieces {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .floating-piece {
+        position: absolute;
+        font-size: 2.5rem;
+        opacity: 0.04;
+        animation: floatUp linear infinite;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.04;
+        }
+        90% {
+          opacity: 0.04;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* ============================================
+       NEON DIVIDER
+       ============================================ */
+      .neon-divider {
+        height: 1px;
+        max-width: 800px;
+        margin: 0 auto;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 229, 255, 0.3),
+          rgba(255, 0, 229, 0.3),
+          transparent
+        );
+      }
+
+      /* ============================================
+       RESPONSIVE
+       ============================================ */
+      @media (max-width: 768px) {
+        .nav {
+          padding: 0.75rem 1rem;
+        }
+        .nav-links {
+          gap: 1rem;
+        }
+        .nav-links a {
+          font-size: 0.6rem;
+        }
+        .stats-bar {
+          gap: 1.5rem;
+        }
+        .journey-track {
+          flex-direction: column;
+          align-items: center;
+        }
+        .journey-track::before {
+          display: none;
+        }
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          padding: 5rem 1.25rem 3rem;
+        }
+      }
+
+      /* ============================================
+       SCROLL ANIMATIONS
+       ============================================ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Backgrounds -->
+    <div class="bg-stars"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Floating Chess Pieces -->
+    <div class="floating-pieces" id="floatingPieces"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav">
+      <div class="nav-logo">CHESS MASTER <span class="quest">QUEST</span></div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#journey">Journey</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#platforms">Play</a>
+        <a href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener"
+          >Discord</a
+        >
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="hero-badge">Now in Development</div>
+      <h1>
+        <span class="line1">Chess Master</span>
+        <span class="line2">Quest</span>
+      </h1>
+      <p class="hero-sub">
+        <strong>Learn real chess. Feel real progression.</strong><br />
+        11,000+ puzzles. Famous game study. Idle mastery.<br />
+        Your journey from park bench to World Championship.
+      </p>
+      <div class="hero-cta">
+        <a href="#platforms" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
+            />
+          </svg>
+          Wishlist on Steam
+        </a>
+        <a href="#newsletter" class="btn btn-secondary">Get Notified</a>
+      </div>
+    </section>
+
+    <!-- ========== STATS BAR ========== -->
+    <div class="stats-bar reveal">
+      <div class="stat">
+        <span class="stat-number">11,062</span>
+        <span class="stat-label">Chess Puzzles</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">471</span>
+        <span class="stat-label">Famous Games</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">8</span>
+        <span class="stat-label">Player Stats</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">10</span>
+        <span class="stat-label">Venues</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">2,600+</span>
+        <span class="stat-label">Peak Elo</span>
+      </div>
+    </div>
+
+    <div class="neon-divider"></div>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features">
+      <div class="section-header reveal">
+        <h2>Why <span class="accent">Quest</span> Is Different</h2>
+        <p>
+          Not just another idle game. Not just another chess app. It's both —
+          and they make each other better.
+        </p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#9819;</span>
+          <h3>Real Chess, Real Growth</h3>
+          <p>
+            Solve genuine tactical puzzles from Lichess. Study Kasparov's
+            brilliancies. Practice openings move-by-move. Everything here
+            teaches actual chess.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#9889;</span>
+          <h3>Idle Progression</h3>
+          <p>
+            Train stats, run research, and earn offline gains while you're away.
+            Come back to coins, upgrades, and your next career milestone ready
+            to claim.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#129513;</span>
+          <h3>Woodpecker Drills</h3>
+          <p>
+            1,062 time-attack puzzles across Blitz, Rapid, and Classical modes.
+            Build pattern recognition the way real chess improvers do.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#127942;</span>
+          <h3>Tournaments & Elo</h3>
+          <p>
+            Compete in simulated tournaments. Your rating rises and falls based
+            on performance. Climb from 800 to Grandmaster across months of play.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#128218;</span>
+          <h3>Famous Game Library</h3>
+          <p>
+            471 classic and famous games with a PGN study viewer. 10 fully
+            annotated games with per-move commentary from grandmaster
+            encounters.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#128300;</span>
+          <h3>Research Lab</h3>
+          <p>
+            Queue up to 5 concurrent long-duration research projects. Unlock
+            permanent bonuses that compound across prestige resets.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#127968;</span>
+          <h3>Venue Progression</h3>
+          <p>
+            Start in the Park. Advance through the Chess Club, University, City
+            Championship, and beyond — all the way to the World Championship
+            stage.
+          </p>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon">&#128156;</span>
+          <h3>Prestige & Legacy</h3>
+          <p>
+            Start a new Career Chapter to earn Legacy Points. Each reset makes
+            you permanently stronger. 8 chapters of deepening mastery.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="neon-divider"></div>
+
+    <!-- ========== JOURNEY ========== -->
+    <section id="journey">
+      <div class="section-header reveal">
+        <h2>Your <span class="accent">Journey</span></h2>
+        <p>From beginner to grandmaster. Months of meaningful progression.</p>
+      </div>
+      <div class="journey-track reveal">
+        <div class="journey-stop">
+          <div class="journey-dot"></div>
+          <div class="journey-elo">800</div>
+          <div class="journey-title">Beginner</div>
+          <div class="journey-venue">&#127795; The Park</div>
+        </div>
+        <div class="journey-stop">
+          <div class="journey-dot"></div>
+          <div class="journey-elo">1200</div>
+          <div class="journey-title">Intermediate</div>
+          <div class="journey-venue">&#9823; Chess Club</div>
+        </div>
+        <div class="journey-stop">
+          <div class="journey-dot"></div>
+          <div class="journey-elo">1800</div>
+          <div class="journey-title">Advanced</div>
+          <div class="journey-venue">&#127963; City Championship</div>
+        </div>
+        <div class="journey-stop">
+          <div class="journey-dot"></div>
+          <div class="journey-elo">2200</div>
+          <div class="journey-title">Expert</div>
+          <div class="journey-venue">&#127942; National Open</div>
+        </div>
+        <div class="journey-stop">
+          <div class="journey-dot"></div>
+          <div class="journey-elo">2600+</div>
+          <div class="journey-title">Grandmaster</div>
+          <div class="journey-venue">&#128081; World Championship</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="neon-divider"></div>
+
+    <!-- ========== SCREENSHOTS ========== -->
+    <section id="screenshots">
+      <div class="section-header reveal">
+        <h2>See It <span class="accent">In Action</span></h2>
+        <p>Neon retro arcade aesthetics. Every screen glows.</p>
+      </div>
+      <div class="gallery reveal">
+        <div class="gallery-item">
+          <!-- Replace with: <img src="assets/screenshot-1.png" alt="Puzzle solving"> -->
+          Screenshot: Puzzle Solving
+        </div>
+        <div class="gallery-item">
+          <!-- Replace with: <img src="assets/screenshot-2.png" alt="Tournament bracket"> -->
+          Screenshot: Tournament
+        </div>
+        <div class="gallery-item">
+          <!-- Replace with: <img src="assets/screenshot-3.png" alt="Upgrade shop"> -->
+          Screenshot: Upgrade Shop
+        </div>
+        <div class="gallery-item">
+          <!-- Replace with: <img src="assets/screenshot-4.png" alt="Famous game study"> -->
+          Screenshot: Famous Games
+        </div>
+        <div class="gallery-item">
+          <!-- Replace with: <img src="assets/screenshot-5.png" alt="Research lab"> -->
+          Screenshot: Research Lab
+        </div>
+        <div class="gallery-item">
+          <!-- Replace with: <img src="assets/screenshot-6.png" alt="Neon UI overview"> -->
+          Screenshot: Neon UI
+        </div>
+      </div>
+    </section>
+
+    <div class="neon-divider"></div>
+
+    <!-- ========== PLATFORMS ========== -->
+    <section id="platforms">
+      <div class="section-header reveal">
+        <h2>Play <span class="accent">Everywhere</span></h2>
+        <p>Steam. Android. iOS. Web. Your chess career travels with you.</p>
+      </div>
+      <div class="platforms reveal">
+        <a href="#" class="platform-badge" title="Wishlist on Steam">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.002.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 12-5.373 12-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.609c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.011H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"
+            />
+          </svg>
+          <div>
+            <span class="platform-name">Steam</span>
+            <span class="platform-status">Coming Soon</span>
+          </div>
+        </a>
+        <a href="#" class="platform-badge" title="Get it on Google Play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 0 1-.609-.92V2.734a.996.996 0 0 1 .609-.92zm10.89 9.479l2.71-2.712-9.433-5.349 6.723 8.061zm2.71 1.414l-2.71-2.712-6.723 8.061 9.433-5.349zm.84-.475l3.212-1.822c.438-.249.438-.871 0-1.12l-3.212-1.822-2.406 2.382 2.406 2.382z"
+            />
+          </svg>
+          <div>
+            <span class="platform-name">Google Play</span>
+            <span class="platform-status">Coming Soon</span>
+          </div>
+        </a>
+        <a href="#" class="platform-badge" title="Download on the App Store">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+            />
+          </svg>
+          <div>
+            <span class="platform-name">App Store</span>
+            <span class="platform-status">Coming Soon</span>
+          </div>
+        </a>
+        <a href="#" class="platform-badge" title="Play in browser">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 1.5c.83 0 1.76.98 2.47 2.76.26.66.49 1.42.67 2.24H8.86c.18-.82.41-1.58.67-2.24C10.24 4.48 11.17 3.5 12 3.5zM8.42 4.2C7.91 5.13 7.5 6.3 7.23 7.65l-.04.22H4.67A8.53 8.53 0 0 1 8.42 4.2zm7.16 0a8.53 8.53 0 0 1 3.75 3.67h-2.52l-.04-.22c-.27-1.36-.68-2.52-1.19-3.45zM4.17 9.37h3.26a23.7 23.7 0 0 0-.18 2.63c0 .92.07 1.8.18 2.63H4.17A8.45 8.45 0 0 1 3.5 12c0-1.16.24-2.27.67-3.37v.74zm4.77 0h6.12c.14.83.21 1.71.21 2.63s-.07 1.8-.21 2.63H8.94A21.8 21.8 0 0 1 8.73 12c0-.92.07-1.8.21-2.63zm7.63 0h3.26c.43.84.67 1.74.67 2.63v.74A8.45 8.45 0 0 0 19.83 9.37h0zm-9.34 6.76h6.28c-.18.82-.41 1.58-.67 2.24C12.76 19.52 11.83 20.5 12 20.5c-.83 0-1.76-.98-2.47-2.76-.26-.66-.49-1.42-.67-2.24H7.23zm-2.56.85h2.52l.04.22c.27 1.36.68 2.52 1.19 3.45a8.53 8.53 0 0 1-3.75-3.67zm12.66 0h2.52a8.53 8.53 0 0 1-3.75 3.67c.51-.93.92-2.09 1.19-3.45l.04-.22z"
+            />
+          </svg>
+          <div>
+            <span class="platform-name">Web</span>
+            <span class="platform-status">Play Now</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="neon-divider"></div>
+
+    <!-- ========== NEWSLETTER CTA ========== -->
+    <section class="cta-section" id="newsletter">
+      <h2 class="reveal">Join the <span class="accent">Quest</span></h2>
+      <p class="reveal">
+        Get notified when we launch. Plus early access, devlogs, and chess tips.
+      </p>
+      <form
+        class="email-form reveal"
+        action="#"
+        method="POST"
+        onsubmit="handleSubscribe(event)"
+      >
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+      <p
+        class="reveal"
+        style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-dim)"
+      >
+        No spam, ever. Unsubscribe anytime.
+      </p>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Press Kit</a>
+        <a href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener"
+          >Discord</a
+        >
+        <a href="https://twitter.com/YOUR_HANDLE" target="_blank" rel="noopener"
+          >Twitter/X</a
+        >
+        <a href="https://github.com/jknight137" target="_blank" rel="noopener"
+          >GitHub</a
+        >
+      </div>
+      <p>&copy; 2026 LearnTech Games. All rights reserved.</p>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+      // Floating chess pieces
+      const pieces = [
+        "&#9812;",
+        "&#9813;",
+        "&#9814;",
+        "&#9815;",
+        "&#9816;",
+        "&#9817;",
+        "&#9818;",
+        "&#9819;",
+        "&#9820;",
+        "&#9821;",
+        "&#9822;",
+        "&#9823;",
+      ];
+      const container = document.getElementById("floatingPieces");
+      for (let i = 0; i < 20; i++) {
+        const el = document.createElement("span");
+        el.className = "floating-piece";
+        el.innerHTML = pieces[Math.floor(Math.random() * pieces.length)];
+        el.style.left = Math.random() * 100 + "%";
+        el.style.fontSize = 1.5 + Math.random() * 2 + "rem";
+        el.style.animationDuration = 15 + Math.random() * 25 + "s";
+        el.style.animationDelay = Math.random() * 20 + "s";
+        container.appendChild(el);
+      }
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Counter animation
+      const statObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              const text = el.textContent;
+              const num = parseInt(text.replace(/[^0-9]/g, ""));
+              const suffix = text.replace(/[0-9,]/g, "");
+              if (isNaN(num)) return;
+              let current = 0;
+              const step = Math.max(1, Math.floor(num / 60));
+              const timer = setInterval(() => {
+                current += step;
+                if (current >= num) {
+                  current = num;
+                  clearInterval(timer);
+                }
+                el.textContent = current.toLocaleString() + suffix;
+              }, 16);
+              statObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      document
+        .querySelectorAll(".stat-number")
+        .forEach((el) => statObserver.observe(el));
+
+      // Newsletter stub
+      function handleSubscribe(e) {
+        e.preventDefault();
+        const input = e.target.querySelector("input");
+        const email = input.value;
+        // TODO: Connect to Firebase, Mailchimp, ConvertKit, etc.
+        input.value = "";
+        input.placeholder = "Thanks! We'll be in touch.";
+        input.style.borderColor = "#39ff14";
+        setTimeout(() => {
+          input.placeholder = "your@email.com";
+          input.style.borderColor = "";
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
