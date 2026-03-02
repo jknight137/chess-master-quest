@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Chess Master Quest | LearnTech Games</title>
+    <meta
+      name="description"
+      content="Privacy Policy for Chess Master Quest — Idle Chess Adventure by LearnTech Games."
+    />
+    <meta name="author" content="LearnTech Games" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ============================================
+       CSS VARIABLES — Neon Retro Arcade Theme
+       ============================================ */
+      :root {
+        --bg-deep: #06060e;
+        --bg-primary: #0a0a14;
+        --bg-card: rgba(13, 13, 26, 0.85);
+        --bg-glass: rgba(20, 20, 40, 0.6);
+        --neon-cyan: #00e5ff;
+        --neon-magenta: #ff00e5;
+        --neon-purple: #b44aff;
+        --neon-green: #39ff14;
+        --neon-gold: #ffd700;
+        --neon-orange: #ff6b35;
+        --text-primary: #e8e8f0;
+        --text-secondary: #9999bb;
+        --text-dim: #666688;
+        --glow-cyan:
+          0 0 20px rgba(0, 229, 255, 0.3), 0 0 40px rgba(0, 229, 255, 0.1);
+        --glow-magenta:
+          0 0 20px rgba(255, 0, 229, 0.3), 0 0 40px rgba(255, 0, 229, 0.1);
+        --glow-purple:
+          0 0 20px rgba(180, 74, 255, 0.3), 0 0 40px rgba(180, 74, 255, 0.1);
+        --border-radius: 12px;
+        --font-display: "Orbitron", monospace, sans-serif;
+        --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      /* ============================================
+       RESET & BASE
+       ============================================ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-deep);
+        color: var(--text-primary);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+      a {
+        color: var(--neon-cyan);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: #fff;
+        text-shadow: var(--glow-cyan);
+      }
+
+      /* ============================================
+       ANIMATED BACKGROUND — Starfield + Grid
+       ============================================ */
+      .bg-stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background:
+          radial-gradient(
+            1px 1px at 10% 20%,
+            rgba(0, 229, 255, 0.4),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 25% 55%,
+            rgba(255, 0, 229, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 40% 15%,
+            rgba(180, 74, 255, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 55% 75%,
+            rgba(0, 229, 255, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 70% 35%,
+            rgba(255, 0, 229, 0.25),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 85% 85%,
+            rgba(57, 255, 20, 0.2),
+            transparent
+          );
+      }
+      .bg-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        animation: gridPulse 8s ease-in-out infinite;
+      }
+      @keyframes gridPulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      /* ============================================
+       NAVIGATION
+       ============================================ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(6, 6, 14, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+      }
+      .nav-logo {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+        letter-spacing: 0.05em;
+      }
+      .nav-logo .quest {
+        color: var(--neon-magenta);
+        text-shadow: var(--glow-magenta);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+      .nav-links a {
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        transition: all 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+      }
+
+      /* ============================================
+       PAGE CONTENT
+       ============================================ */
+      .page-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 8rem 2rem 4rem;
+        position: relative;
+        z-index: 1;
+      }
+      .page-content h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+        margin-bottom: 0.5rem;
+      }
+      .page-content .subtitle {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 3rem;
+      }
+      .page-content h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--neon-magenta);
+        text-shadow: var(--glow-magenta);
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.04em;
+      }
+      .page-content p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+      .page-content ul {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+      .page-content li {
+        margin-bottom: 0.5rem;
+      }
+      .page-content strong {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      /* ============================================
+       FOOTER
+       ============================================ */
+      footer {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(0, 229, 255, 0.06);
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+      footer a {
+        color: var(--text-secondary);
+      }
+      footer .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      footer .footer-links a {
+        font-family: var(--font-display);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      /* ============================================
+       NEON DIVIDER
+       ============================================ */
+      .neon-divider {
+        height: 1px;
+        max-width: 800px;
+        margin: 0 auto;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 229, 255, 0.3),
+          rgba(255, 0, 229, 0.3),
+          transparent
+        );
+      }
+
+      /* ============================================
+       RESPONSIVE
+       ============================================ */
+      @media (max-width: 768px) {
+        .nav {
+          padding: 0.75rem 1rem;
+        }
+        .nav-links {
+          gap: 1rem;
+        }
+        .nav-links a {
+          font-size: 0.6rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-links {
+          display: none;
+        }
+        .page-content {
+          padding: 5rem 1.25rem 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Backgrounds -->
+    <div class="bg-stars"></div>
+    <div class="bg-grid"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav">
+      <a href="/" style="text-decoration: none">
+        <div class="nav-logo">
+          CHESS MASTER <span class="quest">QUEST</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy-policy/">Privacy</a>
+      </div>
+    </nav>
+
+    <!-- ========== PRIVACY POLICY ========== -->
+    <div class="page-content">
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">Effective date: March 2, 2026</p>
+
+      <p>
+        LearnTech Games ("we", "us", or "our") built
+        <strong>Chess Master Quest — Idle</strong>
+        (the "App"). This Privacy Policy explains what information the App
+        collects, how we use it, and what choices you have. We've written this
+        in plain English so it's easy to understand.
+      </p>
+
+      <h2>1. Information We Collect</h2>
+      <p>
+        We designed the App to collect as little data as possible. Here is
+        exactly what is collected and why:
+      </p>
+
+      <h3
+        style="
+          color: var(--text-primary);
+          font-size: 0.95rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        "
+      >
+        Analytics (Firebase Analytics)
+      </h3>
+      <p>
+        We use <strong>Firebase Analytics</strong> to understand how players use
+        the App — for example, which features are popular and where players get
+        stuck. Firebase Analytics collects:
+      </p>
+      <ul>
+        <li>
+          Anonymous app usage events (app opens, screen views, gameplay events)
+        </li>
+        <li>Device type, operating system version, and app version</li>
+        <li>
+          Google may collect device advertising identifiers (Android Advertising
+          ID / iOS IDFA) and IP address as part of Analytics processing
+        </li>
+      </ul>
+      <p>
+        No user-identifying information (such as name or email) is sent by the
+        App to Analytics. For more details, see
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener"
+          >Google's Privacy Policy</a
+        >.
+      </p>
+
+      <h3
+        style="
+          color: var(--text-primary);
+          font-size: 0.95rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        "
+      >
+        Crash Reports (Firebase Crashlytics)
+      </h3>
+      <p>
+        We use <strong>Firebase Crashlytics</strong> to detect and fix crashes.
+        When the App crashes, Crashlytics collects:
+      </p>
+      <ul>
+        <li>Device model and operating system version</li>
+        <li>Stack traces and app state at the time of the crash</li>
+        <li>A Crashlytics installation UUID (not tied to your identity)</li>
+      </ul>
+      <p>
+        No personally identifiable information is intentionally included in
+        crash reports.
+      </p>
+
+      <h3
+        style="
+          color: var(--text-primary);
+          font-size: 0.95rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        "
+      >
+        In-App Purchases
+      </h3>
+      <p>
+        The App offers optional one-time purchases (such as a premium unlock and
+        cosmetic bundles). All purchase transactions are processed entirely by
+        <strong>Google Play</strong> or the <strong>Apple App Store</strong>. We
+        do not directly collect or store your payment information. Purchase
+        entitlements may be verified server-side via Firebase Functions.
+      </p>
+
+      <h3
+        style="
+          color: var(--text-primary);
+          font-size: 0.95rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        "
+      >
+        Local Storage
+      </h3>
+      <p>
+        Game save data, settings, tutorial progress, and audio preferences are
+        stored
+        <strong>locally on your device</strong> only. No account creation is
+        required and no cloud sync currently exists. This data never leaves your
+        device.
+      </p>
+
+      <h2>2. What We Do NOT Collect</h2>
+      <ul>
+        <li>
+          <strong>No ads</strong> — the App does not use any advertising SDK and
+          does not display ads.
+        </li>
+        <li>
+          <strong>No special permissions</strong> — the App does not request
+          access to your camera, microphone, location, contacts, or any other
+          sensitive device features. Only the INTERNET permission is used
+          (required by Firebase).
+        </li>
+        <li>
+          <strong>No user-generated content</strong> — players cannot create,
+          share, or upload content.
+        </li>
+        <li>
+          <strong>No account system</strong> — there is no login, no email
+          collection via the App, no social features, and no user profiles
+          synced to a server.
+        </li>
+      </ul>
+
+      <h2>3. How We Use Your Information</h2>
+      <p>The data collected is used solely to:</p>
+      <ul>
+        <li>
+          <strong>Fix crashes and bugs</strong> — Crashlytics data helps us
+          identify and resolve technical issues quickly.
+        </li>
+        <li>
+          <strong>Improve the game</strong> — Analytics data helps us understand
+          which features players enjoy, where difficulty spikes occur, and how
+          to make the game better.
+        </li>
+        <li>
+          <strong>Verify purchases</strong> — purchase entitlements are
+          validated to ensure players receive what they paid for.
+        </li>
+      </ul>
+      <p>
+        We do not sell, rent, or share your data with third parties for
+        marketing or advertising purposes.
+      </p>
+
+      <h2>4. Third-Party Services</h2>
+      <p>
+        The App uses the following third-party services, each of which has its
+        own privacy policy:
+      </p>
+      <ul>
+        <li>
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener"
+            >Google / Firebase</a
+          >
+          — Analytics, Crashlytics, and purchase verification
+        </li>
+        <li>
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener"
+            >Google Play</a
+          >
+          — in-app purchase processing (Android)
+        </li>
+        <li>
+          <a
+            href="https://www.apple.com/legal/privacy/"
+            target="_blank"
+            rel="noopener"
+            >Apple</a
+          >
+          — in-app purchase processing (iOS)
+        </li>
+      </ul>
+
+      <h2>5. Data Retention</h2>
+      <p>
+        Analytics and Crashlytics data is retained according to
+        <a
+          href="https://firebase.google.com/support/privacy"
+          target="_blank"
+          rel="noopener"
+          >Firebase's default retention policies</a
+        >. Analytics data is retained for up to 14 months. Crash data is
+        retained until manually deleted. We may delete data sooner if it is no
+        longer needed.
+      </p>
+
+      <h2>6. Your Rights</h2>
+      <p>
+        You can request that we delete any data associated with your device by
+        contacting us at
+        <a href="mailto:learntechgames@gmail.com">learntechgames@gmail.com</a>.
+        We will process your request within 30 days.
+      </p>
+      <p>
+        On Android, you can opt out of personalized analytics by resetting or
+        deleting your Advertising ID in your device settings. On iOS, you can
+        limit ad tracking via Settings &gt; Privacy &gt; Tracking.
+      </p>
+
+      <h2>7. Children's Privacy</h2>
+      <p>
+        Chess Master Quest — Idle is
+        <strong>not directed at children under 13</strong>. We do not knowingly
+        collect personal information from children under 13. If you believe a
+        child under 13 has provided us with personal data, please contact us at
+        <a href="mailto:learntechgames@gmail.com">learntechgames@gmail.com</a>
+        and we will promptly delete it.
+      </p>
+
+      <h2>8. Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. Any changes will be
+        posted on this page with an updated effective date. We encourage you to
+        review this page periodically.
+      </p>
+
+      <h2>9. Contact Us</h2>
+      <p>
+        If you have any questions or concerns about this Privacy Policy, please
+        contact us:
+      </p>
+      <ul>
+        <li><strong>Developer:</strong> LearnTech Games</li>
+        <li>
+          <strong>Email:</strong>
+          <a href="mailto:learntechgames@gmail.com">learntechgames@gmail.com</a>
+        </li>
+        <li>
+          <strong>Website:</strong>
+          <a href="https://jknight137.github.io/chess-master-quest/"
+            >https://jknight137.github.io/chess-master-quest/</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="neon-divider"></div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/support/">Support</a>
+        <a href="https://github.com/jknight137" target="_blank" rel="noopener"
+          >GitHub</a
+        >
+      </div>
+      <p>&copy; 2026 LearnTech Games. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
